@@ -1,8 +1,28 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+//customizing range slider module styles
+
+.range-slider {
+  border: 1px solid #bccad7;
+  border-radius: 0;
+
+  .range-slider__range {
+    background: #bccad7;
+  }
+
+  .range-slider__thumb {
+    cursor: col-resize;
+    background: #26323e;
+    border-radius: 0;
+    width: 12px;
+    height: 20px;
+  }
 }
