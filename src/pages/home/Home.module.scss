@@ -1,18 +1,31 @@
-.app {
-  text-align: center;
-}
+.reset__container {
+  background-color: #dce3ea;
+  height: max-content;
+  width: 300px;
+  padding: 10px;
+  position: relative;
 
-.app__header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  &__button {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    border: none;
+    cursor: pointer;
+    color: #566d85;
+    font-size: 12px;
+    background: transparent;
 
-.app__link {
-  color: #61dafb;
+    svg {
+      fill: #566d85;
+      margin-right: 3px;
+    }
+
+    &:hover {
+      color: #16ff43;
+
+      svg {
+        fill: #16ff43;
+      }
+    }
+  }
 }

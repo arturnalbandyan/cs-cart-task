@@ -9,12 +9,12 @@ const deepCamelCaseKeys = (obj) => {
     return obj.map(deepCamelCaseKeys);
   }
 
-  return Object.keys(obj).reduce((acc, key) => {
+  return Object.keys(obj).reduce((result, key) => {
     const camelCaseKey = key.replace(/_([a-z])/g, (match, letter) =>
       letter.toUpperCase()
     );
-    acc[camelCaseKey] = deepCamelCaseKeys(obj[key]);
-    return acc;
+    result[camelCaseKey] = deepCamelCaseKeys(obj[key]);
+    return result;
   }, {});
 };
 

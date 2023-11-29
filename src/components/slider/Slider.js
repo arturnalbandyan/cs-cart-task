@@ -1,31 +1,54 @@
-import React, { useState } from "react";
-import RangeSlider from "react-range-slider-input";
+import React, { memo, useState, useEffect, lazy, useCallback } from "react";
 import styles from "./Slider.module.scss";
 import "react-range-slider-input/dist/style.css";
 
-const Slider = ({ data }) => {
-  const { displayName, sliderMinValue, sliderMaxValue, sliderValuePrefix } =
-    data;
+const RangeSlider = lazy(() => import("react-range-slider-input"));
 
+const Slider = ({
+  data: { displayName, sliderMinValue, sliderMaxValue, sliderValuePrefix },
+  reset,
+  callback,
+}) => {
   const [rangeValue, setRangeValue] = useState([
     sliderMinValue,
     sliderMaxValue,
   ]);
-  
-  const handlePriceInputChange = (selector, value) => {
+
+  const resetState = () => {
+    setRangeValue([sliderMinValue, sliderMaxValue]);
+  };
+
+  useEffect(() => {
+    resetState();
+
+    return callback();
+  }, [reset, callback]);
+
+  const handlePriceInputChange = useCallback((selector, value) => {
     setRangeValue((prevRangeValue) => {
       return selector === "min"
         ? [+value, prevRangeValue[1]]
         : [prevRangeValue[0], +value];
     });
-  };
+  });
 
-  const MinMaxContainer = () => (
+  const RangeMinMax = () => (
+    <div className={styles.range__container__values}>
+      <p aria-label={`Minimum ${displayName} value`}>
+        {sliderValuePrefix + sliderMinValue}
+      </p>
+      <p aria-label={`Maximum ${displayName} value`}>
+        {sliderValuePrefix + sliderMaxValue}
+      </p>
+    </div>
+  );
+
+  const MinMaxContainer = memo(() => (
     <div className={styles.range__container__price}>
       <label className={styles.range__container__price__container}>
-        <span className={styles.range__container__price__container__currency}>
+        <legend className={styles.range__container__price__container__currency}>
           {sliderValuePrefix}
-        </span>
+        </legend>
         <input
           value={rangeValue[0]}
           className={styles.range__container__price__input}
@@ -40,7 +63,10 @@ const Slider = ({ data }) => {
           }
         />
       </label>
-      <span aria-hidden="true" className={styles.range__container__price__container__center__line}>
+      <span
+        aria-hidden="true"
+        className={styles.range__container__price__container__center__line}
+      >
         -
       </span>
       <label className={styles.range__container__price__container}>
@@ -62,7 +88,7 @@ const Slider = ({ data }) => {
         />
       </label>
     </div>
-  );
+  ));
 
   return (
     <details open className={styles.range__container}>
@@ -76,6 +102,7 @@ const Slider = ({ data }) => {
           value={rangeValue}
           className={styles.range__container__slider}
         />
+        <RangeMinMax />
       </section>
     </details>
   );

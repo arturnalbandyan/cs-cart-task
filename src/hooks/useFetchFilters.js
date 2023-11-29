@@ -3,7 +3,7 @@ import useCamelCase from "./useCamelCase";
 
 const useFetchFilters = (url) => {
   const [filters, setFilters] = useState(null);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -16,7 +16,7 @@ const useFetchFilters = (url) => {
     };
 
     fetchData();
-  }, []);
+  }, [url]);
 
   return useCamelCase(filters);
 };

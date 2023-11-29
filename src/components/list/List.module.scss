@@ -3,7 +3,6 @@ details {
   height: max-content;
   width: 300px;
   padding: 10px;
-  //   margin: 50px;
 
   section {
     padding: 10px 0 10px 0;
@@ -12,6 +11,11 @@ details {
   ul {
     list-style-type: none;
     padding: 0;
+
+    p {
+      color: #2e3a47;
+      font-size: 14px;
+    }
   }
 
   li {
@@ -30,7 +34,6 @@ details {
 
   label {
     color: #2e3a47;
-    font-family: "Open Sans", "Helvetica Neue", -apple-system, sans-serif;
     font-size: 14px;
     cursor: pointer;
   }
@@ -45,7 +48,6 @@ details {
     padding: 4px 8px;
     border: 1px solid #acbdcd;
     background: #fff;
-    font-family: "Open Sans", "Helvetica Neue", -apple-system, sans-serif;
     font-size: 14px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;

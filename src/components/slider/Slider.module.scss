@@ -29,7 +29,6 @@ details {
 
   label {
     color: #2e3a47;
-    font-family: "Open Sans", "Helvetica Neue", -apple-system, sans-serif;
     font-size: 14px;
     cursor: pointer;
   }
@@ -42,7 +41,6 @@ details {
     padding: 4px 8px;
     border: 1px solid #acbdcd;
     background: #fff;
-    font-family: "Open Sans", "Helvetica Neue", -apple-system, sans-serif;
     font-size: 14px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -54,17 +52,26 @@ details {
     background-color: #ecf0f1;
     width: 65%;
   }
+  &__values {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
+    p {
+      color: #909598;
+      font-size: 10px;
+    }
+  }
   &__price {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     width: 65%;
 
     &__container {
       display: flex;
-      flex-direction: row;  
+      flex-direction: row;
 
       &__center__line {
         margin: auto 10px;
